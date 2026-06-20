@@ -1,0 +1,6 @@
+{
+  "name": "RoofPro Roofing",
+  "description": "Florida's trusted GAF-Certified and Fortified roofing professionals for residential and commercial solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
