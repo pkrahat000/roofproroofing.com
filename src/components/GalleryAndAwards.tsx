@@ -61,7 +61,7 @@ const PROJECT_IMAGES: ProjectImage[] = [
     material: "Seam Metal" 
   },
   { 
-    src: "public/images/residential_tile.png", 
+    src: "/images/residential_tile.png", 
     fallback: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_6", 
     category: "residential", 
