@@ -15,7 +15,7 @@ const residentialServicesList = [
   { 
     title: "Residential Shingle Roofing Services", 
     img: "/images/residential_shingle.png", 
-    fallback: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    fallback: "/images/residential_shingle.png",
     icon: Layers, 
     desc: "Architectural shingles tailored for standard durability and aesthetics." 
   },
