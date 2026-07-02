@@ -10,18 +10,9 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// Import newly uploaded project images
-import projImage1 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_39_24 PM.png';
-import projImage2 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_39_55 PM.png';
-import projImage3 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_40_16 PM.png';
-import projImage4 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_40_35 PM.png';
-import projImage5 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_40_59 PM.png';
-import projImage6 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_41_15 PM.png';
-import projImage7 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_42_10 PM.png';
-import projImage8 from '../../images/Projects images/ChatGPT Image Jun 19, 2026, 08_42_17 PM.png';
-
 interface ProjectImage {
   src: string;
+  fallback: string;
   label: string;
   category: 'residential' | 'commercial';
   location: string;
@@ -30,56 +21,64 @@ interface ProjectImage {
 
 const PROJECT_IMAGES: ProjectImage[] = [
   { 
-    src: projImage1, 
+    src: "/images/projects_images/project_1.png", 
+    fallback: "/images/residential_flat.png",
     label: "slider_image_1", 
     category: "residential", 
     location: "Santa Rosa Beach, FL", 
     material: "Asphalt Shingles" 
   },
   { 
-    src: projImage2, 
+    src: "/images/residential_metal.png", 
+    fallback: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_2", 
     category: "residential", 
     location: "Destin, FL", 
     material: "Architectural Metal" 
   },
   { 
-    src: projImage3, 
+    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80", 
+    fallback: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_3", 
     category: "residential", 
     location: "Fort Lauderdale, FL", 
     material: "Concrete Tiles" 
   },
   { 
-    src: projImage4, 
+    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80", 
+    fallback: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_4", 
     category: "residential", 
     location: "North Port, FL", 
     material: "Lifetime Shingles" 
   },
   { 
-    src: projImage5, 
+    src: "/images/residential_shingle.png", 
+    fallback: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_5", 
     category: "commercial", 
     location: "Fort Lauderdale, FL", 
     material: "Seam Metal" 
   },
   { 
-    src: projImage6, 
+    src: "public/images/residential_tile.png", 
+    fallback: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_6", 
     category: "residential", 
     location: "Destin, FL", 
     material: "Clay Tiles" 
   },
   { 
-    src: projImage7, 
+    src: "/images/projects_images/project_7.png", 
+    fallback: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_7", 
     category: "commercial", 
     location: "Panama City, FL", 
     material: "Tile Overlays" 
   },
   { 
-    src: projImage8, 
+    src: "/images/projects_images/project_8.png", 
+    fallback: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
     label: "slider_image_8", 
     category: "residential", 
     location: "Niceville, FL", 
@@ -167,12 +166,16 @@ export default function GalleryAndAwards() {
                 transition={{ duration: 0.25 }}
                 onClick={() => setLightboxIndex(index)}
                 className="group relative h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-200/40 cursor-pointer bg-slate-250 hover:shadow-lg hover:border-cyan-500/20 transition-all duration-350"
+                style={index === 0 ? { borderColor: '#ff0000' } : undefined}
               >
                 <img 
                   src={img.src} 
                   alt={img.label} 
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = img.fallback;
+                  }}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
                 />
                 
                 {/* Dynamic Overlay Info Panel on hover */}
@@ -302,8 +305,11 @@ export default function GalleryAndAwards() {
                 <img 
                   src={filteredImages[lightboxIndex].src} 
                   alt={filteredImages[lightboxIndex].label} 
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = filteredImages[lightboxIndex].fallback;
+                  }}
                   className="w-full h-full object-contain"
-                  referrerPolicy="no-referrer"
                 />
 
                 {/* Left navigation arrow */}

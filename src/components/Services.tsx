@@ -10,39 +10,95 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
-// Import local images uploaded by user
-import shingleImg from '../../images/ChatGPT Image Jun 19, 2026, 06_50_06 PM.png';
-import metalImg from '../../images/ChatGPT Image Jun 19, 2026, 06_51_11 PM.png';
-import tileImg from '../../images/ChatGPT Image Jun 19, 2026, 06_51_58 PM.png';
-import flatImg from '../../images/ChatGPT Image Jun 19, 2026, 06_52_50 PM.png';
-import repairImg from '../../images/ChatGPT Image Jun 19, 2026, 06_53_42 PM.png';
-import replacementImg from '../../images/ChatGPT Image Jun 19, 2026, 06_55_30 PM.png';
-
-// Import local commercial images uploaded by user from Ecommerce images
-import commShingleImg from '../../images/Ecommerce images/ChatGPT Image Jun 19, 2026, 08_03_23 PM.png';
-import commMetalImg from '../../images/Ecommerce images/ChatGPT Image Jun 19, 2026, 08_07_32 PM.png';
-import commTileImg from '../../images/Ecommerce images/ChatGPT Image Jun 19, 2026, 08_09_06 PM.png';
-import commFlatImg from '../../images/Ecommerce images/ChatGPT Image Jun 19, 2026, 08_09_59 PM.png';
-import commRepairImg from '../../images/Ecommerce images/ChatGPT Image Jun 19, 2026, 08_12_59 PM.png';
-import commReplacementImg from '../../images/Ecommerce images/ChatGPT Image Jun 19, 2026, 08_20_20 PM.png';
-
 // Exact service names from prompt
 const residentialServicesList = [
-  { title: "Residential Shingle Roofing Services", img: shingleImg, icon: Layers, desc: "Architectural shingles tailored for standard durability and aesthetics." },
-  { title: "Residential Metal Roofing Services", img: metalImg, icon: ShieldCheck, desc: "Lifetime metal roofing systems for storm defense and efficiency." },
-  { title: "Residential Tile Roofing Services", img: tileImg, icon: Flame, desc: "Elegant, premium concrete and clay tiles crafted for durability." },
-  { title: "Residential Flat / Low Slope Roofing Services", img: flatImg, icon: Sparkles, desc: "Advanced watertight solutions for low-slope attachments & decks." },
-  { title: "Residential Roof Repair Services", img: repairImg, icon: Wrench, desc: "Expert leak detection, localized flashing repairs, and shingle fixes." },
-  { title: "Residential Re-Roofing/Roof Replacement Services", img: replacementImg, icon: Activity, desc: "Flawless complete roof tears-offs and clean code-compliant replacements." }
+  { 
+    title: "Residential Shingle Roofing Services", 
+    img: "/images/residential_shingle.png", 
+    fallback: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    icon: Layers, 
+    desc: "Architectural shingles tailored for standard durability and aesthetics." 
+  },
+  { 
+    title: "Residential Metal Roofing Services", 
+    img: "/images/residential_metal.png", 
+    fallback: "https://images.unsplash.com/photo-1628744448840-55412b7746f3?auto=format&fit=crop&w=800&q=80",
+    icon: ShieldCheck, 
+    desc: "Lifetime metal roofing systems for storm defense and efficiency." 
+  },
+  { 
+    title: "Residential Tile Roofing Services", 
+    img: "/images/residential_tile.png", 
+    fallback: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    icon: Flame, 
+    desc: "Elegant, premium concrete and clay tiles crafted for durability." 
+  },
+  { 
+    title: "Residential Flat / Low Slope Roofing Services", 
+    img: "/images/residential_flat.png", 
+    fallback: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+    icon: Sparkles, 
+    desc: "Advanced watertight solutions for low-slope attachments & decks." 
+  },
+  { 
+    title: "Residential Roof Repair Services", 
+    img: "/images/residential_repair.png", 
+    fallback: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    icon: Wrench, 
+    desc: "Expert leak detection, localized flashing repairs, and shingle fixes." 
+  },
+  { 
+    title: "Residential Re-Roofing/Roof Replacement Services", 
+    img: "/images/residential_replacement.png", 
+    fallback: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&w=800&q=80",
+    icon: Activity, 
+    desc: "Flawless complete roof tears-offs and clean code-compliant replacements." 
+  }
 ];
 
 const commercialServicesList = [
-  { title: "Commercial Shingle Roofing Services", img: commShingleImg, icon: Layers, desc: "Durable, high-grade architectural shingling for institutional structures." },
-  { title: "Commercial Metal Roofing Services", img: commMetalImg, icon: ShieldCheck, desc: "Standing seam and corrugated metal coverings built for heavy commercial use." },
-  { title: "Commercial Tile Roofing Services", img: commTileImg, icon: Flame, desc: "Luxury commercial tile systems for master developments & commercial hubs." },
-  { title: "Commercial Flat / Low Slope Roofing Services", img: commFlatImg, icon: Sparkles, desc: "Premium single-ply TPO, EPDM, and modified bitumen watertight systems." },
-  { title: "Commercial Roof Repair Services", img: commRepairImg, icon: Wrench, desc: "Commercial leak inspection, membrane re-sealing, ponding fixes." },
-  { title: "Commercial Re-Roofing/Roof Replacement Services", img: commReplacementImg, icon: Activity, desc: "Complete scale tear-offs or overlay options with comprehensive warranties." }
+  { 
+    title: "Commercial Shingle Roofing Services", 
+    img: "/images/ecommerce_images/commercial_shingle.png", 
+    fallback: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    icon: Layers, 
+    desc: "Durable, high-grade architectural shingling for institutional structures." 
+  },
+  { 
+    title: "Commercial Metal Roofing Services", 
+    img: "/images/ecommerce_images/commercial_metal.png", 
+    fallback: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80",
+    icon: ShieldCheck, 
+    desc: "Standing seam and corrugated metal coverings built for heavy commercial use." 
+  },
+  { 
+    title: "Commercial Tile Roofing Services", 
+    img: "/images/ecommerce_images/commercial_tile.png", 
+    fallback: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    icon: Flame, 
+    desc: "Luxury commercial tile systems for master developments & commercial hubs." 
+  },
+  { 
+    title: "Commercial Flat / Low Slope Roofing Services", 
+    img: "/images/ecommerce_images/commercial_flat.png", 
+    fallback: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    icon: Sparkles, 
+    desc: "Premium single-ply TPO, EPDM, and modified bitumen watertight systems." 
+  },
+  { 
+    title: "Commercial Roof Repair Services", 
+    img: "/images/ecommerce_images/commercial_repair.png", 
+    fallback: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    icon: Wrench, 
+    desc: "Commercial leak inspection, membrane re-sealing, ponding fixes." 
+  },
+  { 
+    title: "Commercial Re-Roofing/Roof Replacement Services", 
+    img: "/images/ecommerce_images/commercial_replacement.png", 
+    fallback: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    icon: Activity, 
+    desc: "Complete scale tear-offs or overlay options with comprehensive warranties." 
+  }
 ];
 
 interface ServicesProps {
@@ -135,8 +191,11 @@ export default function Services({ onScrollToForm }: ServicesProps) {
                         <img 
                           src={service.img} 
                           alt={service.title} 
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = service.fallback;
+                          }}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          referrerPolicy="no-referrer"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                         <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
@@ -200,8 +259,11 @@ export default function Services({ onScrollToForm }: ServicesProps) {
                         <img 
                           src={service.img} 
                           alt={service.title} 
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = service.fallback;
+                          }}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          referrerPolicy="no-referrer"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                         <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
